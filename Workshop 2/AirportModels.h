@@ -17,7 +17,7 @@ namespace sdds {
 	public:
 		Airport();
 		Airport(const Airport& src);
-		Airport operator=(const const Airport& src);
+		Airport operator=(const Airport& src);
 		//Airport(Airport&& src);
 		//Airport& operator=(Airport&& src);
 		~Airport();

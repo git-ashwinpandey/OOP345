@@ -11,5 +11,8 @@ namespace sdds {
 		airportLong = 0;
 	}
 
+    Airport::Airport(const Airport &src) {
+
+    }
 
 }
