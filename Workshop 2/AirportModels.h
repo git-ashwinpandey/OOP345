@@ -18,6 +18,7 @@ namespace sdds {
 		Airport();
 		Airport(const Airport& src);
 		Airport& operator=(const Airport& src);
+        operator bool() const;
 		//Airport(Airport&& src);
 		//Airport& operator=(Airport&& src);
 		~Airport();
@@ -28,9 +29,11 @@ namespace sdds {
 
 
 	class AirportLog {
+        int counter;
+        Airport* airportList;
 	public:
 		AirportLog();
-		AirportLog(char* filename);
+		AirportLog(const char* filename);
 		void addAirport(const Airport& airport);
 		Airport& findAirport(char* state, char* country);
 		Airport& operator[](size_t index);
