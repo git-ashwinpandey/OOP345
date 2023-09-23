@@ -12,7 +12,11 @@ namespace sdds {
 	}
 
     Airport::Airport(const Airport &src) {
+        Airport& operator=(&src);
+    }
 
+    Airport& Airport::operator=(const Airport &src) {
+        return *this;
     }
 
 }
