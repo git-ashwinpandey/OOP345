@@ -2,6 +2,7 @@
 // w2_p1.cpp
 // Rania Arbash
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
 #include <string>

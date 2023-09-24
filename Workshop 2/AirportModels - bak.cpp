@@ -85,12 +85,14 @@ namespace sdds {
 
     void Airport::display(std::ostream &os) {
 		if (*this) {
+			//std::ios_base::fmtflags originalFlags = os.flags();
 			os << std::right << std::setfill('.') << std::setw(20) << "Airport Code" << " : " << std::left << std::setw(30) << airportCode << std::endl
 				<< std::right << std::setfill('.') << std::setw(20) << "Airport Name" << " : " << std::left << std::setw(30) << airportName << std::endl
 				<< std::right << std::setfill('.') << std::setw(20) << "City" << " : " << std::left << std::setw(30) << airportCity << std::endl
 				<< std::right << std::setfill('.') << std::setw(20) << "State" << " : " << std::left << std::setw(30) << airportState << std::endl
 				<< std::right << std::setfill('.') << std::setw(20) << "Country" << " : " << std::left << std::setw(30) << airportCountry << std::endl
 				<< std::right << std::setfill('.') << std::setw(20) << "Latitude" << " : " << std::left << std::setw(30) << airportLat << std::endl;
+			//os.flags(originalFlags);
 			os << std::right << std::setfill('.') << std::setw(20) << "Longitude" << " : " << std::left << std::setw(30) << airportLong << std::endl;
 		}
 		else {
@@ -133,6 +135,7 @@ namespace sdds {
 		if (m_filename != nullptr) {
 			std::ifstream file(m_filename);
 			if (file.is_open()) {
+				// Use a more efficient loop for reading characters
 				char c;
 				while (file.get(c)) {
 					if (c == '\n') {
@@ -208,6 +211,51 @@ namespace sdds {
 	}
 
 
+	/*void AirportLog::readFile() {
+		std::ifstream file;
+		int t_counter = 0;
+
+		if (m_filename != nullptr) {
+			file.open(m_filename);
+			char t_header[255];
+			file.getline(t_header, 255, '\n');
+		}
+			
+
+		while (file.good()) {
+			char t_airportCode[4];
+			char t_airportName[256];
+			char t_airportCity[256];
+			char t_airportState[3];
+			char t_airportCountry[4];
+			//double tt_airportLat;
+			//double tt_airportLong;
+			char t_airportLat[20];
+			char t_airportLong[20];
+			
+			{
+				file.getline(t_airportCode, 4, ',');
+				file.getline(t_airportName, 255, ',');
+				file.getline(t_airportCity, 255, ',');
+				file.getline(t_airportState, 3, ',');
+				file.getline(t_airportCountry, 4, ',');
+				file.getline(t_airportLat, 20, ',');
+				file.getline(t_airportLong, 20, '\n');
+				//file.ignore('\n');
+				//file >> t_airportLat;
+				
+				//file >> t_airportLong;
+				double tt_airportLat = strtod(t_airportLat, nullptr);
+				double tt_airportLong = strtod(t_airportLong, nullptr);
+
+				//std::cout << tt_airportLong << std::endl;
+				airportList[t_counter++] = Airport(t_airportCode, t_airportName, t_airportCity, t_airportState,
+					t_airportCountry, tt_airportLat, tt_airportLong);
+			}
+		}
+		//noOfRecords = --t_counter; // Update the number of records
+	}*/
+
 	void AirportLog::addAirport(const Airport& airport) {
 		// Create a temporary new array with space for the new airport
 		Airport* temp = new Airport[noOfRecords + 1];
@@ -255,84 +303,9 @@ namespace sdds {
 		return noOfRecords;
 	}
 
-	AirportLog::AirportLog(const AirportLog& src) {
-		copyFrom(src);
-	}
-
-	// Implement copy assignment operator
-	AirportLog& AirportLog::operator=(const AirportLog& src) {
-		if (this == &src)
-			return *this;
-
-		clear();
-		copyFrom(src);
-
-		return *this;
-	}
-
-	// Helper function to copy from another AirportLog
-	void AirportLog::copyFrom(const AirportLog& src) {
-		noOfRecords = src.noOfRecords;
-
-		if (src.m_filename != nullptr) {
-			m_filename = new char[strlen(src.m_filename) + 1];
-			strcpy(m_filename, src.m_filename);
-		}
-		else {
-			m_filename = nullptr;
-		}
-
-		if (src.airportList != nullptr) {
-			airportList = new Airport[noOfRecords];
-			for (int i = 0; i < noOfRecords; ++i) {
-				airportList[i] = src.airportList[i];
-			}
-		}
-		else {
-			airportList = nullptr;
-		}
-	}
-
-	AirportLog::AirportLog(AirportLog&& src) {
-		noOfRecords = src.noOfRecords;
-		m_filename = src.m_filename;
-		airportList = src.airportList;
-
-		// Reset the source object
-		src.noOfRecords = 0;
-		src.m_filename = nullptr;
-		src.airportList = nullptr;
-	}
-
-	AirportLog& AirportLog::operator=(AirportLog&& src) {
-		if (this == &src)
-			return *this;
-
-		// Clear the current object
-		clear();
-
-		// Move resources from the source object
-		noOfRecords = src.noOfRecords;
-		m_filename = src.m_filename;
-		airportList = src.airportList;
-
-		// Reset the source object
-		src.noOfRecords = 0;
-		src.m_filename = nullptr;
-		src.airportList = nullptr;
-
-		return *this;
-	}
-
-	void AirportLog::clear() {
+	AirportLog::~AirportLog() {
 		delete[] m_filename;
 		delete[] airportList;
-		m_filename = nullptr;
-		airportList = nullptr;
-	}
-
-	AirportLog::~AirportLog() {
-		clear();
 	}
 
 }
