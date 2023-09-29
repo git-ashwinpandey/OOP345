@@ -1,6 +1,7 @@
 #ifndef SDDS_COLLECTION_H
 #define SDDS_COLLECTION_H
 
+#include <iomanip>
 #include "Book.h"
 
 namespace sdds {
@@ -54,11 +55,9 @@ namespace sdds {
 		}
 
 		std::ostream& print(std::ostream& os) {
-			//os << "(smallest,largest) items: (" << m_smallestItem << "," << m_largestItem << ")" << std::endl;
-			//os << "size/capacity: " << m_size << "/" << C << std::endl;
-			os << "Contents: [";
+			os << "[";
 			for (unsigned i = 0; i < m_size; i++) {
-				os << m_items[i];
+				os << std::setprecision(1) << m_items[i];
 				if (i < m_size - 1) {
 					os << ",";
 				}

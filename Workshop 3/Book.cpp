@@ -26,7 +26,7 @@ namespace sdds {
 			os << std::setw(56) << std::right << titleField << " |" << " (" << std::setw(9) << std::left << std::fixed << std::setprecision(6) << avgPageChap << std::setw(5) << ")";
 		}
 		else {
-			os << "| Invalid Book data";
+			os << "| Invalid book data";
 		}
 		return os;
 	}
