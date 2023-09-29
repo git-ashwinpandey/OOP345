@@ -17,7 +17,7 @@ namespace sdds {
 				m_smallestItem = item;
 			}
 		}
-		void setLargestItem() {
+		void setLargestItem(const T& item) {
 			if (item > m_largestItem) {
 				m_largestItem = item;
 			}
@@ -44,7 +44,7 @@ namespace sdds {
 		}
 
 		bool operator+=(const T& item) {
-			if (m_size < capacity) {
+			if (size() < capacity()) {
 				m_items[m_size++] = item;
 				setSmallestItem(item);
 				setLargestItem(item);
@@ -55,25 +55,26 @@ namespace sdds {
 
 		std::ostream& print(std::ostream& os) {
 			os << "(smallest,largest) items: (" << m_smallestItem << "," << m_largestItem << ")" << std::endl;
-			os << "size/capacity: " << m_size << "/" << C;
+			os << "size/capacity: " << m_size << "/" << C << std::endl;
 			os << "Contents: [";
 			for (unsigned i = 0; i < m_size; i++) {
 				os << m_items[i];
 				if (i < m_size - 1) {
-					os << ", ";
+					os << ",";
 				}
 			}
-			os << "]";
+			os << "]" << std::endl;
+			return os;
 		}
 
 	};
 
 	// Specialization for T = Book and C = 10
 	template <>
-	Book Collection<Book, 10>::m_smallestItem = Book("", 1, 10000);
+	Book Collection<Book, 10>::m_smallestItem;
 
 	template <>
-	Book Collection<Book, 10>::m_largestItem = Book("", 10000, 1);
+	Book Collection<Book, 10>::m_largestItem;
 }
 
 #endif // !SDDS_COLLECTION_H

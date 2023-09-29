@@ -1,3 +1,5 @@
+#include <iomanip>
+#include <string>
 #include "Book.h"
 
 namespace sdds {
@@ -19,7 +21,12 @@ namespace sdds {
 
 	std::ostream& Book::print(std::ostream& os) const {
 		if (*this) {
-			os << m_title << ',' << m_numChapters << "," << m_numPages << " | (" << double(m_numPages / m_numPages) << ")" << std::endl;
+			std::string titleField = m_title + "," + std::to_string(m_numChapters) + "," + std::to_string(m_numPages);
+			double avgPageChap = double(m_numPages) / double(m_numChapters);
+			os << std::setw(56) << std::right << titleField << " |" << " (" << std::setw(9) << std::left << std::fixed << std::setprecision(6) << avgPageChap << std::setw(4) << ")";
+		}
+		else {
+			os << "| Invalid Book data";
 		}
 		return os;
 	}
