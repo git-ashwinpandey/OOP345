@@ -54,8 +54,8 @@ namespace sdds {
 		}
 
 		std::ostream& print(std::ostream& os) {
-			os << "(smallest,largest) items: (" << m_smallestItem << "," << m_largestItem << ")" << std::endl;
-			os << "size/capacity: " << m_size << "/" << C << std::endl;
+			//os << "(smallest,largest) items: (" << m_smallestItem << "," << m_largestItem << ")" << std::endl;
+			//os << "size/capacity: " << m_size << "/" << C << std::endl;
 			os << "Contents: [";
 			for (unsigned i = 0; i < m_size; i++) {
 				os << m_items[i];
@@ -75,6 +75,25 @@ namespace sdds {
 
 	template <>
 	Book Collection<Book, 10>::m_largestItem;
+
+	template <>
+	int Collection<int, 10>::m_smallestItem = 9999;
+
+	template <>
+	int Collection<int, 10>::m_largestItem = -9999;
+
+	template <>
+	double Collection<double, 10>::m_smallestItem = 9999.0;
+
+	template <>
+	double Collection<double, 10>::m_largestItem = -9999.0;
+
+
+	template <>
+	Book Collection<Book, 10>::m_smallestItem = Book("", 1, 10000);
+
+	template <>
+	Book Collection<Book, 10>::m_largestItem = Book("", 10000, 1);
 }
 
 #endif // !SDDS_COLLECTION_H

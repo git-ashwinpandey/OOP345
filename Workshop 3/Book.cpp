@@ -23,7 +23,7 @@ namespace sdds {
 		if (*this) {
 			std::string titleField = m_title + "," + std::to_string(m_numChapters) + "," + std::to_string(m_numPages);
 			double avgPageChap = double(m_numPages) / double(m_numChapters);
-			os << std::setw(56) << std::right << titleField << " |" << " (" << std::setw(9) << std::left << std::fixed << std::setprecision(6) << avgPageChap << std::setw(4) << ")";
+			os << std::setw(56) << std::right << titleField << " |" << " (" << std::setw(9) << std::left << std::fixed << std::setprecision(6) << avgPageChap << std::setw(5) << ")";
 		}
 		else {
 			os << "| Invalid Book data";
