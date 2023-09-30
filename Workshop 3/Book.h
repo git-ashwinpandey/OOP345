@@ -1,3 +1,14 @@
+/*
+*****************************
+Workshop 3
+Name: Ashwin Pandey
+ID : 156027211
+Email : apandey21@myseneca.ca
+Section : NRA
+Date : 30th September, 2023
+*****************************
+*/
+
 #ifndef SDDS_BOOK_H
 #define SDDS_BOOK_H
 
@@ -12,21 +23,13 @@ namespace sdds {
 	public:
 		Book();
 		Book(const std::string& title, unsigned nChapters, unsigned nPages);
-		operator bool() const;
 
-		// TODO: In completing Part 1, add here the missing 
-		// member prototypes that would be necessary for the 
-		// Collection module code and tester module w3_p1.cpp 
-		// to manage Book-type objects. 
-		// 
-		// In completing Part 2, add here the missing 
-		// member prototypes that would be necessary for 
-		// OrderedCollection module code and tester module 
-		// w3_p2.cpp to manage Book-type object. 
-		//
-		// Write the implementations of these functions 
-		// in Book.cpp file
-
+		Book(const Book& other);
+		Book& operator=(const Book& other);
+		bool operator>(const Book& other) const;
+		bool operator<(const Book& other) const;
+		operator bool();
+		bool isValid() const;
 		std::ostream& print(std::ostream& os) const;
 
 	};
