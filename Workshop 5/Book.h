@@ -28,6 +28,11 @@ namespace sdds {
 		Book(const std::string& strBook);
 
 		void display(std::ostream&) const;
+
+		template<typename T>
+		void fixSpelling(T& spellChecker) {
+			spellChecker(description);
+		}
 	};
 
 	std::ostream& operator<<(std::ostream& os, const Book& book);

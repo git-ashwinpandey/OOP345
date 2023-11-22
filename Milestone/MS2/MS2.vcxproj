@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{92f7f480-c663-4aef-8d27-6da7620eccd7}</ProjectGuid>
-    <RootNamespace>Workshop5</RootNamespace>
+    <ProjectGuid>{5de7c8f8-d619-44b1-9fb6-749291d6afc6}</ProjectGuid>
+    <RootNamespace>MS2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,19 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="books.txt" />
+    <ClCompile Include="CustomerOrder.cpp" />
+    <ClCompile Include="ms2.cpp" />
+    <ClCompile Include="Station.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Book.cpp" />
-    <ClCompile Include="Movie.cpp" />
-    <ClCompile Include="SpellChecker.cpp" />
-    <ClCompile Include="SpellChecker.h" />
-    <ClCompile Include="w5_p2.cpp" />
+    <ClInclude Include="CustomerOrder.h" />
+    <ClInclude Include="Station.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Book.h" />
-    <ClInclude Include="Collection.h" />
-    <ClInclude Include="Movie.h" />
+    <Text Include="CustomerOrders.txt" />
+    <Text Include="Stations1.txt" />
+    <Text Include="Stations2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

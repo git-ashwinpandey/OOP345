@@ -127,7 +127,7 @@ namespace sdds {
 		os << std::setw(5) << std::right << bookCountry << " | ";
 		os << std::setw(4) << pubYear << " | ";
 		os << std::setw(6) << std::right << std::fixed << std::setprecision(2) << bookPrice << " | ";
-		os << std::setw(20) << std::left << description;
+		os << std::setw(20) << std::left << description << std::endl;
 	}
 
 

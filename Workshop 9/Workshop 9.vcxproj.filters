@@ -15,35 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Book.cpp">
+    <ClCompile Include="process_data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpellChecker.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpellChecker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Movie.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="w5_p2.cpp">
+    <ClCompile Include="w9_p2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="books.txt">
+    <None Include="data_int.dat">
       <Filter>Resource Files</Filter>
-    </Text>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Book.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Movie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Collection.h">
+    <ClInclude Include="process_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
